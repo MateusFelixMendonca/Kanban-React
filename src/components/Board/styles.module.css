@@ -1,0 +1,134 @@
+/* ==========================================================
+   BOARD CARD — CSS Module (High-End Dark Theme)
+   ========================================================== */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.25rem 1rem;
+
+  text-decoration: none;
+  color: inherit;
+
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card__accentBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--gray-800);
+}
+
+.card:hover .card__accentBar {
+  opacity: 1;
+}
+
+/* ---------- HEADER (título + delete) ---------- */
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  word-break: break-word;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Botão de deletar */
+.card__delete {
+  background: transparent;
+  border: none;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--gray-400);
+
+  opacity: 0;
+  transition: all var(--transition-fast);
+}
+
+.card:hover .card__delete {
+  opacity: 0.8;
+}
+
+.card__delete:hover {
+  opacity: 1 !important;
+  background-color: var(--error-bg);
+  color: var(--error);
+}
+
+/* ---------- META (contadores) ---------- */
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background-color: var(--gray-850);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray-700);
+}
+
+.card__badgeIcon {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ---------- FOOTER DO CARD ---------- */
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--gray-700);
+}
+
+.card__actionText {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  transition: transform var(--transition-fast);
+}
+
+.card:hover .card__actionText {
+  transform: translateX(3px);
+}

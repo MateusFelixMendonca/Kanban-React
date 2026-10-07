@@ -1,0 +1,262 @@
+/* ==========================================================
+   TOPBAR — CSS Module (Glassmorphism Dark Theme)
+   ========================================================== */
+
+.topbar {
+  --topbar-height: 64px;
+  --topbar-radius: var(--radius-md);
+
+  height: var(--topbar-height);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  padding: 0 2rem;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* ---------- LADO ESQUERDO ---------- */
+.topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  white-space: nowrap;
+  transition: transform var(--transition-fast);
+}
+
+.topbar__brand:hover {
+  transform: translateY(-1px);
+}
+
+.topbar__brandIconWrapper {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--primary-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.topbar__brandIcon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.topbar__brandText {
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text-heading) 0%, var(--gray-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.topbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.topbar__link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.topbar__link:hover {
+  color: var(--text-default);
+  background-color: var(--glass-hover);
+}
+
+.topbar__link--active {
+  color: var(--primary-light);
+  background-color: var(--primary-glow);
+  font-weight: 600;
+  border: 1px solid var(--primary-glow);
+}
+
+/* ---------- LADO DIREITO ---------- */
+.topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.topbar__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.topbar__searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  pointer-events: none;
+  color: var(--gray-400);
+}
+
+.topbar__searchInput {
+  background-color: var(--gray-800);
+  border: 1px solid var(--gray-700);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 2.2rem 0.5rem 2.2rem;
+  font-size: 0.85rem;
+  color: var(--text-default);
+  width: 240px;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.topbar__searchInput::placeholder {
+  color: var(--gray-500);
+}
+
+.topbar__searchInput:focus {
+  background-color: var(--gray-850);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  width: 280px;
+}
+
+.topbar__searchClear {
+  position: absolute;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--gray-400);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.topbar__searchClear:hover {
+  color: var(--text-default);
+}
+
+.topbar__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.topbar__btnPlus {
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.topbar__btn--primary {
+  background: var(--primary-gradient);
+  color: var(--text-over-primary);
+  box-shadow: 0 4px 14px var(--primary-glow);
+}
+
+.topbar__btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+  filter: brightness(1.05);
+}
+
+.topbar__btn--primary:active {
+  transform: translateY(0);
+}
+
+.topbar__avatarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.topbar__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: var(--primary-light);
+  border: 1.5px solid var(--primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.topbar__avatar:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.topbar__statusDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary);
+  border: 2px solid var(--gray-900);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================
+   RESPONSIVIDADE
+   ========================================================== */
+
+@media (max-width: 900px) {
+  .topbar__searchInput { width: 160px; }
+  .topbar__searchInput:focus { width: 200px; }
+}
+
+@media (max-width: 640px) {
+  .topbar { padding: 0 1rem; }
+  .topbar__nav { display: none; }
+  .topbar__brandText { display: none; }
+  .topbar__btn--primary span:last-child { display: none; }
+  .topbar__btn--primary { padding: 0.5rem 0.75rem; }
+}

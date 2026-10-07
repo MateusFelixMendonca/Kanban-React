@@ -1,0 +1,150 @@
+/* ==========================================================
+   NOT FOUND — CSS Module (usa variáveis do tema global)
+   ========================================================== */
+
+.notFound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;      /* não ocupa a tela toda, deixa TopBar e Footer visíveis */
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.notFound__content {
+  max-width: 520px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Código 404 */
+.notFound__code {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: var(--primary);
+  text-shadow: 0 4px 12px rgba(13, 161, 112, 0.25);
+}
+
+/* Ícone */
+.notFound__icon {
+  font-size: 3rem;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+/* Título */
+.notFound__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-default);
+  margin-top: 0.5rem;
+}
+
+/* Descrição */
+.notFound__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 420px;
+}
+
+/* Ações */
+.notFound__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Botão primário (volta pra home) */
+.notFound__btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--primary);
+  color: var(--text-over-primary);
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.notFound__btnPrimary:hover {
+  background-color: var(--primary-dark);
+}
+
+.notFound__btnPrimary:active {
+  transform: scale(0.97);
+}
+
+/* Botão ghost (voltar uma página) */
+.notFound__btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--gray-700);
+  padding: 0.7rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  font-family: inherit;
+}
+
+.notFound__btnGhost:hover {
+  background-color: var(--gray-700);
+  color: var(--text-default);
+  border-color: var(--gray-600);
+}
+
+.notFound__btnGhost:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================
+   RESPONSIVIDADE
+   ========================================================== */
+
+@media (max-width: 640px) {
+  .notFound {
+    padding: 2rem 1rem;
+  }
+
+  .notFound__code {
+    font-size: 4.5rem;
+    letter-spacing: -3px;
+  }
+
+  .notFound__icon {
+    font-size: 2.25rem;
+  }
+
+  .notFound__title {
+    font-size: 1.25rem;
+  }
+
+  .notFound__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .notFound__btnPrimary,
+  .notFound__btnGhost {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,111 @@
+/* ==========================================================
+   THEME DESIGN TOKENS — High-End Dark & Light Themes
+   ========================================================== */
+
+:root,
+[data-theme="dark"] {
+  /* 🎭 Palette System (Modo Escuro Premium) */
+  --gray-900: #0b0f19; /* Fundo principal */
+  --gray-850: #0f172a; /* Fundo secundário */
+  --gray-800: #131b2e; /* Fundo de cards/superfícies */
+  --gray-750: #1a243b; /* Superfície elevada */
+  --gray-700: #26334d; /* Bordas e divisores */
+  --gray-600: #3b4b6b; /* Bordas interativas */
+  --gray-500: #64748b; /* Texto desabilitado / ícones sutis */
+  --gray-400: #94a3b8; /* Texto secundário / muted */
+  --gray-300: #cbd5e1; /* Texto secundário destacado */
+  --gray-100: #f8fafc; /* Texto principal / Headings */
+
+  /* 💜 Accent Primary (Electric Indigo & Violet) */
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --primary-glow: rgba(99, 102, 241, 0.3);
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  --accent-purple: #8b5cf6;
+  --accent-purple-glow: rgba(139, 92, 246, 0.25);
+
+  /* 🚦 Status & Feedback */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --error-bg: rgba(239, 68, 68, 0.12);
+  --error-border: rgba(239, 68, 68, 0.3);
+  --info: #3b82f6;
+
+  /* 🎨 Text Tokens */
+  --text-default: #f8fafc;
+  --text-heading: #ffffff;
+  --text-muted: #94a3b8;
+  --text-over-primary: #ffffff;
+  --text-over-primary-dark: #ffffff;
+
+  /* 💎 Glassmorphism & Efeitos */
+  --glass-bg: rgba(19, 27, 46, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-hover: rgba(255, 255, 255, 0.12);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 0 15px rgba(99, 102, 241, 0.15);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.3);
+
+  /* 📏 Layout & Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ☀️ Modo Claro / Light Theme (Luminoso) */
+:root[data-theme="light"],
+[data-theme="light"],
+.light-theme {
+  color-scheme: light;
+
+  /* 🎭 Palette System (Modo Claro) */
+  --gray-900: #ddddddfa; /* Fundo principal claro */
+  --gray-850: #f1f5f9; /* Fundo secundário */
+  --gray-800: #ffffff; /* Fundo de cards/superfícies */
+  --gray-750: #e2e8f0; /* Superfície elevada */
+  --gray-700: #cbd5e1; /* Bordas e divisores */
+  --gray-600: #94a3b8; /* Bordas interativas */
+  --gray-500: #64748b; /* Texto desabilitado / ícones sutis */
+  --gray-400: #475569; /* Texto secundário / muted */
+  --gray-300: #334155; /* Texto secundário destacado */
+  --gray-100: #0f172a; /* Texto principal / Headings */
+
+  /* 💜 Accent Primary (Electric Indigo & Violet Light) */
+  --primary: #4f46e5;
+  --primary-light: #6366f1;
+  --primary-dark: #3730a3;
+  --primary-glow: rgba(79, 70, 229, 0.2);
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  --accent-purple: #7c3aed;
+  --accent-purple-glow: rgba(124, 58, 237, 0.2);
+
+  /* 🚦 Status & Feedback */
+  --success: #059669;
+  --warning: #d97706;
+  --error: #dc2626;
+  --error-bg: rgba(220, 38, 38, 0.08);
+  --error-border: rgba(220, 38, 38, 0.25);
+  --info: #2563eb;
+
+  /* 🎨 Text Tokens */
+  --text-default: #1e293b;
+  --text-heading: #0f172a;
+  --text-muted: #64748b;
+  --text-over-primary: #ffffff;
+  --text-over-primary-dark: #ffffff;
+
+  /* 💎 Glassmorphism & Efeitos */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-hover: rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 0 15px rgba(99, 102, 241, 0.12);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.2);
+}
