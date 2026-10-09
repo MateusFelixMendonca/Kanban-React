@@ -11,15 +11,34 @@ export const ACTIONS = {
   MOVE_CARD: 'MOVE_CARD',
   DELETE_CARD: 'DELETE_CARD',
   DELETE_BOARD: 'DELETE_BOARD',
+  DELETE_COLUMN: 'DELETE_COLUMN',
 } as const;
 
 export type BoardAction =
   | { type: typeof ACTIONS.ADD_BOARD; payload: { title: string } }
-  | { type: typeof ACTIONS.ADD_COLUMN; payload: { boardId: string; title: string } }
-  | { type: typeof ACTIONS.ADD_CARD; payload: { columnId: string; title: string } }
-  | { type: typeof ACTIONS.DELETE_CARD; payload: { columnId: string; cardId: string } }
+  | {
+      type: typeof ACTIONS.ADD_COLUMN;
+      payload: { boardId: string; title: string };
+    }
+  | {
+      type: typeof ACTIONS.ADD_CARD;
+      payload: { columnId: string; title: string };
+    }
+  | {
+      type: typeof ACTIONS.DELETE_CARD;
+      payload: { columnId: string; cardId: string };
+    }
   | { type: typeof ACTIONS.DELETE_BOARD; payload: { boardId: string } }
-  | { type: typeof ACTIONS.MOVE_CARD; payload?: any };
+  | { type: typeof ACTIONS.DELETE_COLUMN; payload: { columnId: string } }
+  | {
+      type: typeof ACTIONS.MOVE_CARD;
+      payload: {
+        cardId: string;
+        sourceColId: string;
+        destColId: string;
+        destIndex: number;
+      };
+    };
 
 type BoardContextType = {
   state: AppState;
@@ -40,7 +59,7 @@ function boardReducer(state: AppState, action: BoardAction): AppState {
         ...state,
         boards: {
           ...state.boards,
-          [id]: { id, title, columnIds: [] },
+          [id]: { id, title, columnIds: ['col-1', 'col-2', 'col-3'] },
         },
       };
     }
@@ -134,9 +153,64 @@ function boardReducer(state: AppState, action: BoardAction): AppState {
       };
     }
     //////////////////////////////////////////////////
+    case ACTIONS.DELETE_COLUMN: {
+      const { columnId } = action.payload;
+      const { [columnId]: _colunaDeletada, ...restoDasColunas } = state.columns;
+
+      const newBoards = { ...state.boards };
+      Object.keys(newBoards).forEach(bId => {
+        if (newBoards[bId].columnIds.includes(columnId)) {
+          newBoards[bId] = {
+            ...newBoards[bId],
+            columnIds: newBoards[bId].columnIds.filter(id => id !== columnId),
+          };
+        }
+      });
+
+      return {
+        ...state,
+        boards: newBoards,
+        columns: restoDasColunas,
+      };
+    }
+    //////////////////////////////////////////////////
     case ACTIONS.MOVE_CARD: {
-      // Fica pra fase de Drag and Drop
-      return state;
+      const { cardId, sourceColId, destColId, destIndex } = action.payload;
+
+      // ---------- CASO 1: mesma coluna (só reordena) ----------
+      if (sourceColId === destColId) {
+        const column = state.columns[sourceColId];
+        const newCardIds = Array.from(column.cardIds);
+
+        const sourceIndex = newCardIds.indexOf(cardId);
+        newCardIds.splice(sourceIndex, 1); // remove da posição antiga
+        newCardIds.splice(destIndex, 0, cardId); // insere na nova
+
+        return {
+          ...state,
+          columns: {
+            ...state.columns,
+            [sourceColId]: { ...column, cardIds: newCardIds },
+          },
+        };
+      }
+
+      // ---------- CASO 2: colunas diferentes ----------
+      const sourceCol = state.columns[sourceColId];
+      const destCol = state.columns[destColId];
+
+      const newSourceIds = sourceCol.cardIds.filter(id => id !== cardId);
+      const newDestIds = Array.from(destCol.cardIds);
+      newDestIds.splice(destIndex, 0, cardId);
+
+      return {
+        ...state,
+        columns: {
+          ...state.columns,
+          [sourceColId]: { ...sourceCol, cardIds: newSourceIds },
+          [destColId]: { ...destCol, cardIds: newDestIds },
+        },
+      };
     }
     //////////////////////////////////////////////////
     default:

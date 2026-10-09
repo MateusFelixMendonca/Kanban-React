@@ -22,6 +22,7 @@ export function SwitchTheme(props: SwitchThemeProps) {
       <input
         className='l'
         type='checkbox'
+        checked={isChecked}
         aria-label='Alternar tema'
         {...props}
         onChange={toggleTheme}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import type { FormEvent } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './styles.module.css';
 
 interface ModalProps {
@@ -24,7 +25,7 @@ export function Modal({ isOpen, onClose, onCreate }: ModalProps) {
     onClose();
   }
 
-  return (
+  return createPortal(
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <h2 className={styles.title}>Criar novo Board</h2>
@@ -49,6 +50,7 @@ export function Modal({ isOpen, onClose, onCreate }: ModalProps) {
           </div>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
